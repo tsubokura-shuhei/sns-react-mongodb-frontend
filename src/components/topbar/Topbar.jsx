@@ -1,5 +1,6 @@
 import React from "react";
 import { Chat, Notifications, Search } from "@mui/icons-material";
+import "./Topbar.css";
 
 const Topbar = () => {
   return (
