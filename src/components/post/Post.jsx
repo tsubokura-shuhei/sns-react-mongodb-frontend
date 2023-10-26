@@ -7,12 +7,18 @@ const Post = () => {
     <div className="post">
       <div className="postWrapper">
         <div className="postTop">
-          <img src="./assets/person/1.jpeg" alt="" className="postProfileImg" />
-          <span className="postUsername">tsubokura</span>
-          <span className="postDate">5分前</span>
-        </div>
-        <div className="postRight">
-          <MoreVert />
+          <div className="postTopLeft">
+            <img
+              src="./assets/person/1.jpeg"
+              alt=""
+              className="postProfileImg"
+            />
+            <span className="postUsername">tsubokura</span>
+            <span className="postDate">5分前</span>
+          </div>
+          <div className="postTopRight">
+            <MoreVert />
+          </div>
         </div>
         <div className="postCenter">
           <span className="postText">SNSを自作中です。</span>
