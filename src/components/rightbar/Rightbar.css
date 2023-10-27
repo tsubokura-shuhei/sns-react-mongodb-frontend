@@ -1,3 +1,61 @@
 .fightbar {
-  flex: 3.5;
+  flex: 3;
+}
+
+.rightbarWrapper {
+  padding: 20px 20px 0px 0px;
+}
+
+.eventContainer {
+  display: flex;
+  align-items: center;
+}
+
+.startImg {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
+
+.eventText {
+  font-weight: 300;
+  font-size: 15px;
+}
+
+.eventImg {
+  width: 100%;
+  border-radius: 10px;
+  margin: 25px 0px;
+}
+
+.rightbarTitle {
+  margin-bottom: 20px;
+}
+
+.rightbarFriendList {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
+.rightbarFriend {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.rightbarProfileImgContainer {
+  margin-right: 10px;
+  position: relative;
+}
+
+.rightbarProfileImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.rightbarUserName {
+  font-weight: 550;
 }
