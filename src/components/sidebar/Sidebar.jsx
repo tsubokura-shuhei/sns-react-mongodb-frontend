@@ -11,15 +11,23 @@ import {
 
 import "./Sidebar.css";
 import { Users } from "../../dummyData";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
+  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">
         <ul className="sidebarList">
           <li className="sidebarListItem">
             <Home className="sidebarIcon" />
-            <span className="sidebarListItemText">ホーム</span>
+            <Link
+              to="/"
+              style={{ textDecoration: "none", color: "black", width: "100%" }}
+            >
+              <span className="sidebarListItemText">ホーム</span>
+            </Link>
           </li>
           <li className="sidebarListItem">
             <Search className="sidebarIcon" />
@@ -39,7 +47,12 @@ const Sidebar = () => {
           </li>
           <li className="sidebarListItem">
             <Person className="sidebarIcon" />
-            <span className="sidebarListItemText">プロフィール</span>
+            <Link
+              to="/profile/tsubokura"
+              style={{ textDecoration: "none", color: "black", width: "100%" }}
+            >
+              <span className="sidebarListItemText">プロフィール</span>
+            </Link>
           </li>
           <li className="sidebarListItem">
             <Settings className="sidebarIcon" />
@@ -51,7 +64,7 @@ const Sidebar = () => {
           {Users.map((user) => (
             <li className="sidebarFriend">
               <img
-                src={user.profilePicture}
+                src={PUBLIC_FOLDER + user.profilePicture}
                 alt=""
                 className="sidebarFriendImg"
               />

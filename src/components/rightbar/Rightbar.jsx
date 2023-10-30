@@ -4,6 +4,8 @@ import Online from "../online/Online";
 import { Users } from "../../dummyData";
 
 const Rightbar = ({ profile }) => {
+  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const HomeRightbar = () => {
     return (
       <>
@@ -56,7 +58,7 @@ const Rightbar = ({ profile }) => {
           <div className="tightbarFollowings">
             <div className="rightbarFollowing">
               <img
-                src="assets/person/1.jpeg"
+                src={PUBLIC_FOLDER + "/person/1.jpeg"}
                 alt=""
                 className="rightbarFollowingImg"
               />
@@ -64,7 +66,7 @@ const Rightbar = ({ profile }) => {
             </div>
             <div className="rightbarFollowing">
               <img
-                src="assets/person/1.jpeg"
+                src={PUBLIC_FOLDER + "/person/1.jpeg"}
                 alt=""
                 className="rightbarFollowingImg"
               />
@@ -72,7 +74,7 @@ const Rightbar = ({ profile }) => {
             </div>
             <div className="rightbarFollowing">
               <img
-                src="assets/person/1.jpeg"
+                src={PUBLIC_FOLDER + "/person/1.jpeg"}
                 alt=""
                 className="rightbarFollowingImg"
               />
@@ -80,7 +82,7 @@ const Rightbar = ({ profile }) => {
             </div>
             <div className="rightbarFollowing">
               <img
-                src="assets/person/1.jpeg"
+                src={PUBLIC_FOLDER + "/person/1.jpeg"}
                 alt=""
                 className="rightbarFollowingImg"
               />

@@ -1,12 +1,15 @@
 import React from "react";
 import { Chat, Notifications, Search } from "@mui/icons-material";
 import "./Topbar.css";
+import { Link } from "react-router-dom";
 
 const Topbar = () => {
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
-        <span className="logo">SNS App</span>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">SNS App</span>
+        </Link>
       </div>
       <div className="topbarCenter">
         <div className="searchbar">
