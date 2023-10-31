@@ -62,7 +62,7 @@ const Sidebar = () => {
         <hr className="sidebarHr" />
         <ul className="sidebarFriendList">
           {Users.map((user) => (
-            <li className="sidebarFriend">
+            <li className="sidebarFriend" key={user.id}>
               <img
                 src={PUBLIC_FOLDER + user.profilePicture}
                 alt=""
