@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./TimeLine.css";
 import Share from "../share/Share";
-import Post from "../post/Post";
-import { Posts } from "../../dummyData";
+// import Post from "../post/Post";
+// import { Posts } from "../../dummyData";
+import axios from "axios";
 
 const TimelLine = () => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await axios.get(
+        "/posts/timeline/652b82adc63146806ccac221"
+      );
+      console.log(response);
+    };
+    fetchPosts();
+  }, []);
+
   return (
     <div className="timeline">
       <div className="timelineWrapper">
         <Share />
-        {Posts.map((post) => (
+        {/* {Posts.map((post) => (
           <Post post={post} key={post.id} />
-        ))}
+        ))} */}
       </div>
     </div>
   );
