@@ -2,7 +2,7 @@ import React from "react";
 import "./Share.css";
 import { Analytics, Face, Gif, Image } from "@mui/icons-material";
 
-function Share() {
+const Share = () => {
   return (
     <div className="share">
       <div className="shareWrapper">
@@ -39,6 +39,6 @@ function Share() {
       </div>
     </div>
   );
-}
+};
 
 export default Share;

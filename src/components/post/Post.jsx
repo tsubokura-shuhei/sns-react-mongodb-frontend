@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Post.css";
 import { MoreVert } from "@mui/icons-material";
-import { Users } from "../../dummyData";
+// import { Users } from "../../dummyData";
+import axios from "axios";
 
 const Post = ({ post }) => {
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
   const { id, date, desc, photo, like, comment } = post;
-  const [likebox, setLikebox] = useState(like);
+  const [likebox, setLikebox] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
+
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await axios.get(`/users/${post.userId}`);
+      console.log(response);
+      setUser(response.data);
+    };
+    fetchUser();
+  }, []);
 
   const handleLike = () => {
     setLikebox(isLiked ? likebox - 1 : likebox + 1);
@@ -21,15 +33,12 @@ const Post = ({ post }) => {
           <div className="postTopLeft">
             <img
               src={
-                PUBLIC_FOLDER +
-                Users.filter((user) => user.id === id)[0].profilePicture
+                user.profilePicture || PUBLIC_FOLDER + "/person/noAvatar.png"
               }
               alt=""
               className="postProfileImg"
             />
-            <span className="postUsername">
-              {Users.filter((user) => user.id === id)[0].username}
-            </span>
+            <span className="postUsername">{user.username}</span>
             <span className="postDate">{date}</span>
           </div>
           <div className="postTopRight">
@@ -38,7 +47,7 @@ const Post = ({ post }) => {
         </div>
         <div className="postCenter">
           <span className="postText">{desc}</span>
-          <img src={PUBLIC_FOLDER + photo} alt="" className="postImg" />
+          <img src={PUBLIC_FOLDER + post.img} alt="" className="postImg" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
@@ -48,7 +57,9 @@ const Post = ({ post }) => {
               className="likeIcon"
               onClick={() => handleLike()}
             />
-            <span className="postLikeCounter">{likebox}</span>
+            <span className="postLikeCounter">
+              {likebox}人がいいねを押しました
+            </span>
           </div>
           <div className="postBottomRight">
             <span className="postCommentText">{comment}:コメント</span>

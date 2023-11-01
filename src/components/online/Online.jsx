@@ -1,6 +1,6 @@
 import React from "react";
 
-function Online({ user }) {
+const Online = ({ user }) => {
   const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
   const { profilePicture, username } = user;
   return (
@@ -13,9 +13,9 @@ function Online({ user }) {
         />
         <span className="rightbarOnline"></span>
       </div>
-      <soan className="rightbarUserName">{username}</soan>
+      <span className="rightbarUserName">{username}</span>
     </li>
   );
-}
+};
 
 export default Online;
