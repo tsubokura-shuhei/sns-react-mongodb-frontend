@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Post.css";
 import { MoreVert } from "@mui/icons-material";
-// import { Users } from "../../dummyData";
+import { Users } from "../../dummyData";
 import axios from "axios";
 
 const Post = ({ post }) => {
@@ -14,12 +14,11 @@ const Post = ({ post }) => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await axios.get(`/users/${post.userId}`);
-      console.log(response);
+      const response = await axios.get(`/users?userId=${post.userId}`);
       setUser(response.data);
     };
     fetchUser();
-  }, []);
+  }, [post.userId]);
 
   const handleLike = () => {
     setLikebox(isLiked ? likebox - 1 : likebox + 1);
@@ -33,7 +32,9 @@ const Post = ({ post }) => {
           <div className="postTopLeft">
             <img
               src={
-                user.profilePicture || PUBLIC_FOLDER + "/person/noAvatar.png"
+                user.profilePicture
+                  ? PUBLIC_FOLDER + user.profilePicture
+                  : PUBLIC_FOLDER + "/person/noAvatar.png"
               }
               alt=""
               className="postProfileImg"
