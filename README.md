@@ -68,3 +68,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# 【ブランチ名規則】
+
+# バグ修正ブランチ
+
+git checkout -b bug-〇〇-▲▲-□□
+
+# ホットフィックスブランチ（緊急性の高いバグ）
+
+git checkout -b hotfix-▲▲-□□-●●
+
+# 新規機能開発ブランチ
+
+git checkout -b feature-〇〇-▲▲-□□
