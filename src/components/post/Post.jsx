@@ -1,18 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Post.css";
 import { MoreVert } from "@mui/icons-material";
 import { Users } from "../../dummyData";
 import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../state/AuthContext";
 
 const Post = ({ post }) => {
-  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
-  const { id, date, desc, photo, like, comment, createdAt } = post;
+  const { id, date, desc, photo, like, comment, createdAt, img } = post;
   const [likebox, setLikebox] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
 
   const [user, setUser] = useState({});
+  const PUBLIC_FOLDER = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { user: currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -22,7 +24,14 @@ const Post = ({ post }) => {
     fetchUser();
   }, [post.userId]);
 
-  const handleLike = () => {
+  const handleLike = async () => {
+    try {
+      //いいね機能APIを実装
+      await axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
+    } catch (err) {
+      console.log(err);
+    }
+
     setLikebox(isLiked ? likebox - 1 : likebox + 1);
     setIsLiked(!isLiked);
   };
@@ -52,7 +61,11 @@ const Post = ({ post }) => {
         </div>
         <div className="postCenter">
           <span className="postText">{desc}</span>
-          <img src={PUBLIC_FOLDER + post.img} alt="" className="postImg" />
+          {post.img ? (
+            <img className="postImg" src={PUBLIC_FOLDER + post.img} alt="" />
+          ) : (
+            <img style={{ display: "none" }} alt="" />
+          )}
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
